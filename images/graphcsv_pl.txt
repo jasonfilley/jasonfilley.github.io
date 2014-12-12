@@ -1,0 +1,28 @@
+#!/usr/bin/perl -w
+#
+# graphcsv.pl: converts 2-column comma-separated value input into a directed
+# graph.  This isn't very well tested. See doc to convert output. Or, you
+# could just change the "as_canon" last line to "as_svg" or "as_gif".  I find
+# it easier to save as "canon," the text layout output, to easily test different
+# layouts.  For instance, "twopi" may work better than "dot," depending.
+#
+# usage: graphcsv.pl < input.csv > output.canon
+#
+# Make sure you apply the patch below for the perl GraphViz module
+# http://www.snakelegs.org/2006/09/18/quoting-names-in-the-graphviz-perl-module/
+
+use strict;
+use GraphViz;
+use Text::CSV_XS;
+
+my $g = GraphViz->new(layout => 'dot', directed => 1, ratio => 'compress', overlap => 'false');
+my $csv = Text::CSV_XS->new();
+
+while (<>) {
+    my $status = $csv->parse($_);
+    my @columns = $csv->fields();
+    $g->add_edge($columns[0] => $columns[1]);
+}
+
+print $g->as_canon;
+

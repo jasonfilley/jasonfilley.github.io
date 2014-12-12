@@ -1,0 +1,60 @@
+#!/bin/sh
+# quickcheck.sh
+#
+# EXAMPLE:
+# for f in `ls -A`; do quicksanitycheck.sh $f; done
+
+FILETYPE=`file -b -n $1`
+if [[ "$FILETYPE" = "Bourne shell script text" ]]
+        then
+                echo "Bourne: $1"
+                ksh -n $1 2>&1
+                echo "\n"
+
+elif [[ "$FILETYPE" = "Korn shell script text" ]]
+        then
+                echo "Korn: $1"
+                ksh -n $1 2>&1
+                echo "\n"
+
+elif [[ "$FILETYPE" = "perl commands text" ]]
+        then
+                echo "Perl: $1"
+                perl -c $1 2>&1
+                echo "\n"
+
+                podchecker -warnings -warnings $1 2>&1
+                echo "\n"
+
+elif [[ "$FILETYPE" = "troff or preprocessor input text" ]]
+        then
+                echo "troff: $1"
+                groff -b -z -w w $1 2>&1
+                echo "\n"
+
+elif [[ "$FILETYPE" = "ASCII English text, with overstriking" ]]
+        then
+                echo "troff: $1"
+                groff -b -z -w w $1 2>&1
+                echo "\n"
+
+# Assume .pm extension is a perl module, since file(1) doesn.t know it
+elif [[ $1 = *.pm ]]
+        then
+                echo "perl module: $1"
+                perl -c $1 2>&1
+                echo "\n"
+
+                podchecker -warnings -warnings $1 2>&1
+                echo "\n"
+
+# Assume .php extension is a PHP script
+elif [[ $1 = *.php ]]
+        then
+                echo "PHP script: $1"
+                php -l $1 2>&1
+                echo "\n"
+
+fi 
+
+

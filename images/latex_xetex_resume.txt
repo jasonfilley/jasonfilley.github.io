@@ -1,0 +1,244 @@
+%   2013, by Jason Filley
+%   http://www.snakelegs.org
+%   http://www.jasonfilley.com
+%   Adapted from work originally by Alessandro (http://aleplasmati.comuv.com)
+%	Licensed under the Creative Commons Attribution 3.0 Unported
+%	http://creativecommons.org/licenses/by/3.0/
+%   --- I recommend "Unbeatable Resumes: America's Top Recruiter 
+%   --- Reveals What REALLY Gets You Hired," by Tony Beshara. What you
+%   --- think happens with your resume is probably not what happens in
+%   --- reality.  Speaking of reality, you'll probably need to convert the PDF
+%   --- to another format.  See: http://johnmacfarlane.net/pandoc/
+%   --- Why on Earth the online job sites (Monster, Dice, etc.) haven't 
+%   --- standardized on a format (XML) escapes me.
+%   And special thanks to Edd Barrett (http://www.theunixzoo.co.uk/wiki/doku.php)
+%   for all the TexLive work on OpenBSD.
+
+%adjust the points
+\documentclass[11pt]{article} %10pt when you add more\ldots
+
+% American, here.  European and others may need to adjust to A4.
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0in}
+\setlength\textheight{10in}
+\setlength\textwidth{6.5in}
+\setlength\oddsidemargin{0in}
+\setlength\evensidemargin{0in}
+\setlength\parindent{0pt}
+ 
+%Colors/Graphics
+\usepackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{pifont}   % for ding .  it looks good
+\usepackage[hmargin=1.25cm, vmargin=1.5cm]{geometry}               
+\usepackage{paralist} % for itemize to squish lists
+
+% blue dingbat bullets
+\definecolor{bullets}{HTML}{104170}
+\newcommand{\mybullet}{\mbox{\LARGE\raisebox{+0.2ex}{\tiny{\ding{118}}}}}
+\renewcommand{\labelitemi}{\textcolor{bullets}{\mybullet}}
+
+% Fonts and Tweaks for XeLaTeX
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setsansfont{Goudy Trajan}%http://castletype.com/html/tipoteca/goudy-trajan-regular.html 
+\setmonofont[Scale=MatchLowercase]{Inconsolata} %http://www.levien.com/type/myfonts/inconsolata.html
+\setromanfont{Cambria} %Calluna is my favorite, but I can't justify the expense for the full set....
+   % http://www.exljbris.com/calluna.html
+\newfontfamily\headernamefont{Goudy Trajan}
+
+%Setup hyperref package, and colours for links, text and headings
+\usepackage{hyperref}
+\definecolor{linkcolour}{HTML}{000000}	
+\definecolor{text1}{HTML}{000000}
+\definecolor{headings}{HTML}{701112} 	%dark red
+
+\hypersetup{colorlinks,breaklinks,
+			urlcolor=linkcolour, 
+			linkcolor=linkcolour}
+
+\usepackage{fancyhdr}				%custom footer
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\headrulewidth}{0pt}
+\usepackage{titlesec}				%custom \section
+
+\titleformat{\section}
+	{\color{headings}
+		\scshape\Large\center}{}{0em}{}
+\titlespacing{\section}{0pt}{0pt}{5pt}
+
+\begin{document}
+\color{text1} % set text color for the whole doc
+
+\begin{center}
+{\sffamily\Huge\color{headings}\headernamefont Your Name}\\
+\end{center}
+ 
+\begin{center}
+\textsc{\large{1234 Primrose Lane, City, STATE 90210 
+{\textcolor{bullets}{\mybullet}} (555)~555-5555 
+{\textcolor{bullets}{\mybullet}}
+address@example.com}}\\
+\end{center}
+
+\color{text1}
+ 
+%% Summary %%
+%% NOT an objective, which sucks. %%
+\section{\textsc{\framebox{Summary}}}
+\textbf{In summary, I'm pretty good.} Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum
+ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer
+id, vulputate a, magna. Donec vehicula augue eu neque.\\
+
+
+ 
+\section{\textsc{\framebox{Work Experience}}}
+
+\large{\textbf{Company \hfill Current, from Jan~2012}}\\
+\normalsize
+\indent\textit{Position Title \hfill City,\ STATE}
+\hrule\smallskip
+
+\textit{Short company description, if not generally recognized. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem.}\\
+
+% general text describing your role
+Nulla et lectus vestibulum urna
+fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra
+ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar
+at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan
+eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.\\
+
+% list of specific dutes and accomplishments
+ \begin{description}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{1pt}
+\item[First Item] Nam dui ligula, fringilla a, euismod sodales, sollicitudin
+vel, wisi, \textbf{by 40\%}! Morbi auctor lorem non justo. Nam lacus libero,
+pretium at, lobortis vitae, ultricies et, tellus.
+\item[Second Item] Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna,
+vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis.
+Suspendisse ut massa \textit{\textbf{while blindfolded}}. Cras nec ante.
+Pellentesque a nulla.
+\item[Third Item] Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt
+urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris.
+Nulla malesuada porttitor diam.
+\end{description}
+\bigskip
+
+\large{\textbf{Company \hfill Jan~2011 to Jan~2012}}\\
+\normalsize
+\indent\textit{Position Title \hfill City,\ STATE}
+\hrule\smallskip
+
+\textit{Short company description, if not generally recognized. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem.}\\
+
+% general text describing your role
+Nulla et lectus vestibulum urna
+fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra
+ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar
+at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan
+eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.\\
+
+% list of specific dutes and accomplishments
+ \begin{description}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{1pt}
+\item[First Item] Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero,
+pretium at, lobortis vitae, ultricies et, tellus.
+\item[Second Item] Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna,
+vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque
+a nulla.
+\item[Third Item] Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt
+urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris.
+Nulla malesuada porttitor diam.
+\end{description}
+\bigskip
+
+\large{\textbf{Company \hfill Jan~2010 to Jan~2011}}\\
+\normalsize
+\indent\textit{Position Title \hfill City,\ STATE}
+\hrule\smallskip
+
+\textit{Short company description, if not generally recognized. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem.}\\
+
+% general text describing your role
+Nulla et lectus vestibulum urna
+fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra
+ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar
+at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan
+eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.\\
+
+% list of specific dutes and accomplishments
+ \begin{description}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{1pt}
+\item[First Item] Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi auctor lorem non justo. Nam lacus libero,
+pretium at, lobortis vitae, ultricies et, tellus.
+\item[Second Item] Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet magna,
+vitae ornare odio metus a mi. Morbi ac orci et nisl hendrerit mollis. Suspendisse ut massa. Cras nec ante. Pellentesque
+a nulla.
+\item[Third Item] Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam tincidunt
+urna. Nulla ullamcorper vestibulum turpis. Pellentesque cursus luctus mauris.
+Nulla malesuada porttitor diam.
+\end{description}
+\bigskip
+
+
+
+\section{\textsc{\framebox{Technical Proficiency}}}
+% AKA ``word soup''
+% separate each type with a bullet
+\begin{inparaitem}
+\item[]Donec felis erat
+\item congue non\slash volutpat\slash at\slash tincidunt\slash tristique\slash
+libero
+\item Vivamus viverra fermentum felis. 
+\item Donec 
+\item nonummy 
+\item pellentesque 
+\item ante 
+\item Phasellus adipiscing semper elit
+\item Proin fermentum massa ac quam
+\item Sed diam turpis, molestie vitae 
+\item placerat a, molestie nec, leo 
+\item Maecenas lacinia
+\item \LaTeX
+\item Hi, Mom!
+\item Nam ipsum ligula, eleifend at, accumsan nec, suscipit a,
+ipsum
+\item Morbi blandit ligula feugiat magna. Nunc eleifend consequat lorem. Sed
+ lacinia nulla vitae enim. Pellentesque tincidunt purus vel magna. Integer non enim. Praesent euismod nunc eu purus. Donec bibendum quam in tellus. Nullam cursus pulvinar lectus. Donec et mi. Nam vulputate metus eu enim. Vestibulum
+pellentesque felis eu massa.
+\end{inparaitem}\\
+
+
+
+\section{\textsc{\framebox{Education \& Certifications}}}
+ \begin{description}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{1pt}
+\item[Quisque ullamcorper] placerat ipsum. Cras nibh. Morbi vel justo vitae
+lacus tincidunt ultrices. 
+\item[Lorem ipsum] dolor sit amet, consectetuer adipiscing elit. In hac
+habitasse platea dictumst. 
+\item[Integer tempus convallis augue.] Etiam facilisis. Nunc elementum fermentum wisi. Aenean placerat.
+\end{description}
+ 
+\section{\textsc{\framebox{References and additional information}}}
+References available upon request.\\
+Website: \url{http://www.example.com}
+
+\end{document}  

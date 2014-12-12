@@ -1,0 +1,358 @@
+#!/usr/bin/perl -w
+
+
+
+# Copyright (c) 2006 Jason Filley <jason@snakelegs.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+
+#use strict;
+use GraphViz;
+use Net::DNS;
+
+my $g = GraphViz->new(directed => 1, ratio => 'compress', overlap => 'false');
+
+my $res  = Net::DNS::Resolver->new;
+$res->nameservers("195.66.240.130");
+
+my @zone = $res->axfr("uk");
+
+### Group:  Address Records 
+my $addresscluster = {
+        name => 'Address Records',
+        style => 'dotted',
+};
+
+### Group: Mail Records
+my $mailcluster = {
+        name => 'Mail Records',
+        style => 'bold',
+};
+
+### Group: SOA Records
+my $soacluster = {
+	name	=>"Start of Authority Records",
+	style => 'dotted',
+};
+
+
+foreach $rr (@zone) {
+
+my $type=$rr->type;
+my $ttl=$rr->ttl;
+my $class=$rr->class;  
+my $name=$rr->name;
+
+	### Name: A
+	### Type: IPv4 Host Address 
+	### Group: Addresses 
+	if ($type eq 'A') {
+		my $address = $rr->address;	
+		$g->add_edge($name => $address, label => "Type: $type\nTTL: $ttl");
+	}
+
+	### Name: AAAA
+	### Type: IPv6 Host Address 
+	### Group: Addresses
+        elsif ($rr->type eq 'AAAA') { 
+                my $address = $rr->address;
+                $g->add_node($rr->name);
+                $g->add_edge($rr->name => $address, label => "Type: $type\nTTL: $ttl");
+	}
+
+        ### Name: AFSDB
+	### Type: Andrew File System Database
+        elsif ($rr->type eq 'AFSDB') {
+		my $subtype = $rr->subtype;
+		my $hostname = $rr->hostname;
+		$g->add_node($rr->name);
+		$g->add_edge($rr->name => $hostname, label => "Type: $type\nSubtype: $subtype");
+        }
+
+        ### Name: CERT
+	### Type: Certificate
+        elsif ($rr->type eq 'CERT') {
+		my $format = $rr->format;
+		my $tag = $rr->tag;
+		my $algorithm = $rr->algorithm;
+		my $certificate = $rr->certificate;
+        }
+
+        ### Name: CNAME
+	### Type: Canonical Name
+        elsif ($type eq 'CNAME') {
+		my $cname = $rr->cname;
+                $g->add_edge($name => $cname, label => "Type: $type\nTTL: $ttl");
+        }
+
+        ### Name: DNAME
+	### Type: Domain Rename
+        elsif ($rr->type eq 'DNAME') {
+		my $dname = $rr->dname;
+		$g->add_edge($rr->name => $dname, label => "Type: $type\nTTL: $ttl");
+        }
+
+        ### Name: EID
+	### Type: Endpoint Identifier for Nimrod
+        elsif ($rr->type eq 'EID') {
+		my $rdlength = $rr->rdlength;
+		my $rdata = $rr->rdata;
+        }
+
+        ### Name: HINFO
+	### Type: Host Info
+        elsif ($rr->type eq 'HINFO') {
+		my $cpu = $rr->cpu;
+		my $os = $rr->os;
+		# add this to node label
+        }
+
+        ### Name: ISDN
+	### Type: ISDN number
+        elsif ($rr->type eq 'ISDN') {
+		my $address = $rr->address;
+		my $sa = $rr->sa;
+        }
+
+        ### Name: LOC
+	### Type: Location information 
+        elsif ($rr->type eq 'LOC') {
+		my $version = $rr->version;
+		my $size = $rr->size;
+		my $horiz_pre = $rr->horiz_pre;
+		my $vert_pre = $rr->vert_pre;
+		my $latitude = $rr->latitude;
+		my $longitude = $rr->longitude;
+		my $lation = $rr->lation;
+		my $altitude = $rr->altitude;
+        }
+
+        ### Name: MB
+	### Type: MailBox domain name
+        elsif ($rr->type eq 'MB') {
+		my $madname = $rr->madname;
+        }
+
+        ### Name: MG
+	### Type: Mail Group member
+        elsif ($rr->type eq 'MG') {
+		my $mgmname = $rr->mgmname;
+        }
+
+        ### Name: MINFO
+	### Type: Mailbox or mailing list information 
+        elsif ($rr->type eq 'MINFO') {
+		my $rmailbx = $rr->rmailbx;
+		my $emailbx = $rr->emailbx;
+        }
+
+        ### Name: MR
+	### Type: Mail Rename domain name
+        elsif ($rr->type eq 'MR') {
+		my $newname = $rr->newname;
+		#name -> newname
+        }
+
+        ### Name: MX 
+	### Type: Mail exchanger
+        elsif ($type eq 'MX') {
+		my $preference = $rr->preference;
+		my $exchange = $rr->exchange;
+
+		$g->add_edge($name => $exchange, label => "Type: $type\nTTL: $ttl\nPreference: $preference");
+        }
+
+        ### Name: NAPTR 
+	### Type: Naming Authority Pointer
+        elsif ($rr->type eq 'NAPTR') {
+		my $order = $rr->order;
+		my $preference = $rr->preference;
+		my $flags = $rr->flags;
+		my $service = $rr->service;
+		my $regexp = $rr->regexp;
+		my $replacement = $rr->replacement;
+        }
+
+        ### Name: NIMLOC
+	### Type: Nimrod Locator
+        elsif ($rr->type eq 'NIMLOC') {
+		my $rdlength = $rr->rdlength;
+		my $rdata = $rr->rdata;
+        }
+
+        ### Name: NS
+	### Type: authoritative Name Server
+        elsif ($rr->type eq 'NS') {
+		my $nsdname = $rr->nsdname;
+
+		$g->add_edge($name => $nsdname, label => "Type: $type\nTTL: $ttl\n");
+        }
+
+        ### Name: NSAP
+	### Type: Network Service Access Point address
+        elsif ($rr->type eq 'NSAP') {
+		my $idp = $rr->idp;
+		my $dsp = $rr->dsp;
+		my $afi = $rr->afi;
+		my $idi = $rr->idi;
+		my $dfi = $rr->dfi;
+		my $aa = $rr->aa;
+		my $rsvd = $rr->rsvd;
+		my $rd = $rr->rd;
+		my $area = $rr->area;
+		my $id = $rr->id;
+		my $sel = $rr->sel;
+        }
+
+        ### Name: NULL 
+	### Type: Anything
+        elsif ($rr->type eq 'NULL') {
+		my $rdlength = $rr->rdlength;
+		my $rdata = $rr->rdata;
+        }
+
+        ### Name: OPT
+	### Type: Options for extending flag and error capabilities
+        elsif ($rr->type eq 'OPT') {
+		#not valid like this
+        }
+
+        ### Name: PTR
+	### Type: IPv4 Pointer
+        elsif ($rr->type eq 'PTR') {
+		my $ptrdname = $rr->ptrdname;
+
+		$g->add_edge($name => $ptrdname, label => "Type: $type\nTTL: $ttl\n");
+        }
+
+        ### Name: PX
+	### Type: X.400 mail mapping information 
+        elsif ($rr->type eq 'PX') {
+		my $preference = $rr->preference;
+		my $map822 = $rr->map822;
+		my $mapx400 = $rr->mapx400;
+        }
+
+        ### Name: RP
+	### Type: Responsible Person
+        elsif ($rr->type eq 'RP') {
+		my $mbox = $rr->mbox;
+		my $txtdname = $rr->txtdname;
+        }
+
+        ### Name: RT 
+	### Type: Route Through
+        elsif ($rr->type eq 'RT') {
+		my $preference = $rr->preference;
+		my $intermediate = $rr->intermediate;
+        }
+
+        ### Name: SOA
+	### Type: Start of Authority
+        elsif ($rr->type eq 'SOA') {
+		my $mname = $rr->mname;
+		my $rname = $rr->rname;
+		my $serial = $rr->serial;
+		my $refresh = $rr->refresh;
+		my $retry = $rr->retry;
+		my $expire = $rr->expire;
+		my $minimum = $rr->minimum;
+
+		my $templabel = "DNS Server: $mname\n" .
+			"Responsible: $rname\n" .
+			"Serial number: $serial\n" .
+			"Refresh interval: $refresh\n" .
+			"Retry interval: $retry\n" .
+			"Expiration interval: $expire\n" .
+			"Minimum TTL: $minimum\n";
+		$g->add_node($rr->name, label => $templabel);
+
+	}
+
+        ### Name: SRV
+	### Type: Service location
+        elsif ($rr->type eq 'SRV') {
+		my $priority = $rr->priority;
+		my $weight = $rr->weight;
+		my $port = $rr->port;
+		my $target = $rr->target;
+
+		$g->add_edge($rr->name => $target, label => "Priority: $priority\nWeight: $weight\nPort: $port");
+        }
+
+        ### Name: SSHFP
+	### Type: SSH Key Fingerprint
+        elsif ($rr->type eq 'SSHFP') {
+		my $algorithm = $rr->algorithm;
+		my $fingerprint = $rr->fingerprint;
+		my $fpbin = $rr->fpbin;
+		my $fptype = $rr->fptype;
+		my $babble = $rr->babble;
+        }
+
+        ### Name: TKEY 
+	### Type: Transaction Key
+        elsif ($rr->type eq 'TKEY') {
+		my $algorithm = $rr->algorithm;
+		my $inception = $rr->inception;
+		my $expiration = $rr->expiration;
+		my $mode = $rr->mode;
+		my $error = $rr->error;
+		my $other_len = $rr->other_len;
+		my $other_data = $rr->other_data;	
+        }
+
+        ### Name: TSIG 
+	### Type: Transaction Signature
+        elsif ($rr->type eq 'TSIG') {
+		my $algorithm = $rr->algorithm;
+		my $time_signed = $rr->time_signed;
+		my $fudge = $rr->fudge;
+		my $mac_size = $rr->mac_size;
+		my $mac = $rr->mac;
+		my $original_id = $rr->original_id;
+		my $error = $rr->error;
+		my $other_len = $rr->other_len;
+		my $other_data = $rr->other_data;
+		my $sig_data = $rr->sig_data;
+		my $sign_func = $rr->sign_func;
+        }
+
+        ### Name: TXT
+	### Type: Text
+        elsif ($rr->type eq 'TXT') {
+		
+        }
+
+        ### Unknown ###
+	### All unknown types ###
+        elsif ($rr->type eq 'Unknown') {
+
+        }
+
+        ### Name: X25
+	### Type: X.25 PSDN address 
+        elsif ($rr->type eq 'X25') {
+		my $psdn = $rr->psdn;
+        }
+
+  }
+
+
+
+
+
+print $g->as_canon;
+

@@ -1,0 +1,29 @@
+--- /usr/local/libdata/perl5/site_perl/GraphViz.pm.original	Sat Sep 16 20:14:43 2006
++++ /usr/local/libdata/perl5/site_perl/GraphViz.pm	Sun Sep 17 20:05:15 2006
+@@ -1094,7 +1094,10 @@
+     $attrs =~ s/,/;/go;
+     $attrs =~ s/\]$//o;
+ 
+-    $dot .= "\tsubgraph cluster_" . $self->_quote_name($name) . " {\n";
++	my $fullclustername;
++	$fullclustername = $name;
++	$fullclustername =~ s/^\"//;
++	$dot .= "\tsubgraph cluster_" . $fullclustername . " {\n";
+     $dot .= "\t\t$attrs;\n";
+     $dot .= join "", map { "\t\t" . $self->{NODES}->{$_}->{_code} . _attributes($self->{NODES}->{$_}) . ";\n"; } (@{$cluster_nodes{$cluster}});
+     $dot .= $clusters_edge{$cluster} if exists $clusters_edge{$cluster};
+@@ -1159,11 +1162,9 @@
+ 
+   return $self->{_QUOTE_NAME_CACHE}->{$name} if $name && exists $self->{_QUOTE_NAME_CACHE}->{$name};
+ 
+-  if (defined $name && $name =~ /^[a-zA-Z]\w*$/ && $name ne "graph") {
+-    # name is fine
+-  } elsif (defined $name && $name =~ /^[a-zA-Z](\w| )*$/) {
+-    # name contains spaces, so quote it
+-    $name = '"' . $name . '"';
++  if (defined $name && $name ne "graph") {
++	$name =~ s/(\\|\")/\\\$1/mg;
++	$name = '"' . $name . '"'; 
+   } else {
+     # name contains weird characters - let's make up a name for it
+     $name = 'node' . ++$self->{_NAME_COUNTER};

@@ -1,0 +1,57 @@
+#!/usr/bin/perl
+# synopsis: decode Borderware MXtreme obfuscated archived Subject: lines
+# usage: mxdec.pl < file
+# licence: public domain
+#
+# Alvin Fernald lives!
+# ISBN-10: 1932350004
+# ISBN-13: 978-1932350005
+
+
+use strict;
+use warnings;
+
+#escape \ $ " @
+my $ciphertext =
+"1 \"34%7'908+[-E<)!\@#\$=^&*({}/5e]~2iwvf.zcbamstukpjlghorxyqnd,\\?6_`IHGZ>DRSAPNQJYTOXUKLMCBVWF:|;";
+
+my $plaintext =
+"!~\"#\$%&'()*+,-./0123456789:;<=>? \@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}";
+
+while (<STDIN>) {
+
+    if ( $_ =~ /subject=/ ) {
+
+        my @line = split( " ", $_ );
+        my $queueid = $line[5];
+
+        if ( $_ =~ /subject=(.*)/g ) {
+
+            print "$queueid";
+            my $realsubject = &Translate($1);
+            print $realsubject;
+            print "\n";
+        }
+    }
+
+}
+
+sub Translate {
+
+    my $input  = $_[0];
+    my $output = "";
+
+    # process each character in the ciphertext
+    foreach my $byte ( split //, $input ) {
+
+        # find its index in the ciphertext array
+        my $index = index( $ciphertext, $byte );
+
+        # find the plaintext character with same index
+        my $char = substr( $plaintext, $index, 1 );
+        $output .= $char;
+
+    }
+    return $output;
+}
+
