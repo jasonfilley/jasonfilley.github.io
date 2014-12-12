@@ -1,4 +1,5 @@
 ---
+layout: post
 title: SCOM to Nagios Migration
 ---
 
