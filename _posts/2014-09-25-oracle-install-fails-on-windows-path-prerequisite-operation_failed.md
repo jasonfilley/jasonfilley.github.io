@@ -1,5 +1,5 @@
 ---
-
+layout: post
 title: Oracle install fails on Windows %PATH% prerequisite OPERATION_FAILED
 permalink: /2014/09/25/oracle-install-fails-on-windows-path-prerequisite-operation_failed/
 
