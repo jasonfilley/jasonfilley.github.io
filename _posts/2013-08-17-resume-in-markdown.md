@@ -25,11 +25,11 @@ Name your resume something like "your_name.md" and update the "ME=" line in the 
 E.g.,
 
 #Your Name
-1234 Main St., City, State 12345
-(555) 555-5555
-your.name@example.com
-http://www.example.com
-http://www.linkedin.com/in/yourname
+1234 Main St., City, State 12345    
+(555) 555-5555        
+your.name@example.com          
+http://www.example.com          
+http://www.linkedin.com/in/yourname      
 
 #Summary
 
