@@ -22,61 +22,11 @@ Name your resume something like "your_name.md" and update the "ME=" line in the 
 
 [resume_template.zip]({{ site.url }}/images/resume_template.zip)
 
-E.g.,
+See also:
 
-#Your Name
-1234 Main St., City, State 12345    
-(555) 555-5555        
-your.name@example.com          
-http://www.example.com          
-http://www.linkedin.com/in/yourname      
-
-#Summary
-
-Quick Summary (not objective) specifically highlighting why you qualify for the job.
-
-#Work Experience (only last 10 years)
-
-## Company Name 1 (City, State)
-*[Company 1][] description, particularly if not well-known.*
-
-**Position Title (include alternate titles in parentheses)** (Start Date - End Date)
-
-Summary of your role
-
-- Accomplishment that contains **bold text**.
-- Accomplishment
-- Accomplishment
-- Accomplishment
-
-## Company Name 2 (City, State)
-*[Company 2][] description, particularly if not well-known.*
-
-**Position Title (include alternate titles in parentheses)** (Start Date - End Date)
-
-Summary of your role
-
-- Accomplishment that contains **bold text**.
-- Accomplishment
-- Accomplishment
-- Accomplishment
-
-## Company Name 3 (City, State)
-*[Company 3][] description, particularly if not well-known.*
-
-**Position Title (include alternate titles in parentheses)** (Start Date - End Date)
-
-Summary of your role
-
-- Accomplishment
-- Accomplishment
-- Accomplishment
-- Accomplishment
+* ["Unbeatable Resumes," by Tony Beshara](http://www.amazon.com/Unbeatable-Resumes-Americas-Recruiter-Reveals/dp/0814417620/)
+* [How a Programmer Reads your Resume (comic)](http://stevehanov.ca/blog/index.php?id=56)
+* [latex_xetex_resume - text]({{ site.url }}/images/latex_xetex_resume.txt)
+* [latex_xetex_resume - PDF]({{ site.url }}/images/latex_xetex_resume.pdf)
 
 
-
-
-
-[Company 1]: http://www.example.com/company1
-[Company 2]: http://www.example.com/company2
-[Company 3]: http://www.example.com/company2
