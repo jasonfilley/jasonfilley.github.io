@@ -9,7 +9,7 @@ name: Jason Filley - Snakelegs
 description: System Administrator and failed classical banjo player
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: 
+avatar: {{ site.url }}/images/snakelegs.jpg 
 
 #
 # Flags below are optional
