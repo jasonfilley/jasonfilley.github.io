@@ -10,9 +10,11 @@ I had a workstation today that would not install the 6.0_update32 JRE, getting t
 
 So, fire up [procmon](http://technet.microsoft.com/en-us/sysinternals/bb896645), include "msiexec.exe" and see what pops up....
 
-![Java 2753 Registry Error]({{ site.url }}/images/java_2753_error_registry.png)
+![Java 2753 Registry Error msiexec]({{ site.url }}/images/java_2753_regutil_dll_error.png)
 
 Simple enough.  The installer thinks there's another conflicting existing installation:
+
+![Java 2753 Registry Error key]({{ site.url }}/images/java_2753_error_registry.png)
 
 Delete the registry key (and subkeys):
 
