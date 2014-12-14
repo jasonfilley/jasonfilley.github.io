@@ -12,7 +12,7 @@ IT staff need to keep their resumes current, regardless of job search status. Em
 
 A lot of people have recently concluded that Markdown (in [Pandoc](http://johnmacfarlane.net/pandoc/)) is an easily-maintainable and portable text format suitable for publishing resumes. For example:
 
-[http://sysadvent.blogspot.com/2011/12/day-14-write-your-resume-in-markdown.html]
+[http://sysadvent.blogspot.com/2011/12/day-14-write-your-resume-in-markdown.html](http://sysadvent.blogspot.com/2011/12/day-14-write-your-resume-in-markdown.html)
 
 Problem is that the PDF's I've seen are serviceable, but they're bug-ugly. The Microsoft Word output is nice, but you still want a decent-looking PDF.
 
