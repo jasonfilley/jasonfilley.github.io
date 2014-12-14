@@ -2779,44 +2779,6 @@ Throw everything into one file.  Then extract email addresses, as:
 			<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
-	<item>
-				<title>LaTeX XeTeX Resume Template Sample</title>
-		<link>http://www.snakelegs.org/latex-xetex-resume-template-sample/</link>
-		<pubDate>Sat, 26 Jan 2013 23:57:15 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://www.snakelegs.org/?p=754</guid>
-		<description></description>
-		<content:encoded><![CDATA[After reading <a title="Unbeatable Resumes" href="http://www.amazon.com/Unbeatable-Resumes-Americas-Recruiter-Reveals/dp/0814417620/">"Unbeatable Resumes," by Tony Beshara</a>, I decided to update my resume.  I like this format.
-
-See also:
-<ul>
-	<li><a href="http://stevehanov.ca/blog/index.php?id=56" target="_blank">How a Programmer Reads your Resume (comic)</a></li>
-	<li><a href="http://johnmacfarlane.net/pandoc/" target="_blank">Pandoc</a></li>
-</ul>
-<a href="http://www.snakelegs.org/wp-content/uploads/2013/01/latex_xetex_resume.txt">latex_xetex_resume</a> - txt (Wordpress isn't letting me upload .tex, and it's a fight I don't want to pick).
-
-<a href="http://www.snakelegs.org/wp-content/uploads/2013/01/latex_xetex_resume.pdf">latex_xetex_resume</a> - PDF.]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>754</wp:post_id>
-		<wp:post_date>2013-01-26 17:57:15</wp:post_date>
-		<wp:post_date_gmt>2013-01-26 23:57:15</wp:post_date_gmt>
-		<wp:comment_status>closed</wp:comment_status>
-		<wp:ping_status>closed</wp:ping_status>
-		<wp:post_name>latex-xetex-resume-template-sample</wp:post_name>
-		<wp:status>publish</wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type>post</wp:post_type>
-		<wp:post_password></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-		<category domain="category" nicename="computers"><![CDATA[Computers]]></category>
-		<category domain="category" nicename="main"><![CDATA[Main]]></category>
-		<wp:postmeta>
-			<wp:meta_key>_edit_last</wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-	</item>
-	<item>
 				<title>Regain space on Windows Embedded Standard 7 by Removing Speech Components</title>
 		<link>http://www.snakelegs.org/regain-space-on-windows-embedded-standard-7-by-removing-speech-components/</link>
 		<pubDate>Sun, 17 Mar 2013 18:51:51 +0000</pubDate>
