@@ -8,6 +8,8 @@ Update: [Disk Cleanup Wizard addon lets users delete outdated Windows updates on
 
 I picked up an HP t5740e thin client off eBay, as I had deployed some at a prior job.  Window Embedded Standard 7 (32-bit), with 2GB RAM and 4GB flash.  Set it up the way I want it, re-enable the write filter, and Bob's your uncle.   But the default HP build includes components that take up a lot of space, and I have no need for them -- namely, the text-to-speech components, the natural language components, and the SAT performance tests (sample movies).
 
+<!--excerpt-->
+
 While logged in as Administrator, with the write filter disabled:
 
 {% highlight winbatch %}
