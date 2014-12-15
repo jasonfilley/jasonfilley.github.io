@@ -6,6 +6,9 @@ permalink: /2012/03/15/constraint-satisfaction-product-mix-wood-paneling-example
 
 Operations Research / Optimization / Constraint Satisfaction is the Holy Grail of computing.
 
+Sample in Minizinc (no comparison to Hakan's) ...
+
+<!--excerpt-->
 
 {% highlight text %}
 % minizinc product mix model from http://www.solver.com/stepbystep.htm
