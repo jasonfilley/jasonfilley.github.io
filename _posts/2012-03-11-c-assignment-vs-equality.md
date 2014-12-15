@@ -56,7 +56,7 @@ In the whole tree, I ended up with only a few cases where an assignment occurs i
 $ find /usr/src -type f -name \*.c -exec ./assigntest.pl '{}' \;
 {% endhighlight %}
 
-{% highlight perl %}
+{% highlight c %}
 /*/usr/src/sys/arch/alpha/alpha/in_cksum.c: 101 */
 if ((offset = 3 & (long) lw) != 0) {
 
