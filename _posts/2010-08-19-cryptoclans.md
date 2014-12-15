@@ -14,7 +14,10 @@ This Perl script takes as input a pipe-delimited file where:
 
 Try it with family member names, favorite meals, old pets, whatever.  Note that a character might be the same in plaintext and ciphertext.  I may change that later.
 
+<!--excerpt-->
+
 {% highlight perl %}
+
 #!/usr/bin/perl -T
 
 # Copyright (c) 2010 Jason Filley jason@snakelegs.org
