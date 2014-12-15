@@ -10,6 +10,7 @@ layout: default
 
       <div class="entry">
         {{ post.content | truncatewords:80}}
+        {{ post.content | split:'<!--excerpt-->' | first }}
       </div>
       
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>

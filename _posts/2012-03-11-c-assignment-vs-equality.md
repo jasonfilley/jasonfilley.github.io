@@ -13,6 +13,8 @@ In C:
 
 It's an [easy bug to introduce](http://www.andromeda.com/people/ddyer/topten.html), using a single = when you want two, so I tried to find more.  Mainly, it was regex practice.
 
+<!--excerpt-->
+
 {% highlight perl %}
 #!/usr/bin/perl -w
 
