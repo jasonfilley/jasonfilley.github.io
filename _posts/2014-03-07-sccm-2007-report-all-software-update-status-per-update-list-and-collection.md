@@ -6,6 +6,8 @@ permalink: /2014/03/07/sccm-2007-report-all-software-update-status-per-update-li
 
 SCCM 2007 report to show patch status details per Update List and Collection.  You can get here by drilling down 4 reports deep, individually, for hundreds or thousands of your servers, or you can just run this, throw it into Excel, and filter and munge at will.  Much faster.
 
+<!--excerpt-->
+
 {% highlight sql %}
 
 
