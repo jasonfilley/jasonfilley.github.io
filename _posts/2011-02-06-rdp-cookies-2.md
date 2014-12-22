@@ -128,7 +128,7 @@ The reserved section should always be "0000".
 I wrote a short Perl script to parse offline tcpdump packet dumps for RDP cookies:
 
 {% highlight perl %}
-{% include /images/watch_rdp_cookies.pl %}
+{% include watch_rdp_cookies.pl %}
 {% endhighlight %}
 
 
