@@ -6,7 +6,7 @@ permalink: /2011/02/06/rdp-cookies-2/
 
 Windows terminal server (remote desktop session host) environments needing load balancing and high availability may use 3rd-party load balancers to distribute initial connections and persist further network connections. Load balancers utilize RDP cookies -- short text strings sent by RDP clients in initial connection requests.
 
-<!-- excerpt -->
+<!--excerpt-->
 
 Native Windows functionality may be sufficient for some needs, say by creating a terminal server farm and using round-robin DNS to distribute initial connections ("Poor Man's Load Balancing"). For example, given three terminal servers (TERM{1,2,3}) with IP addresses 10.10.10.{1,2,3}, the administrator would publish a DNS A record (e.g., "TERMFARM") with the multiple IP addresses of each terminal server. The client requests the address for "TERMFARM" is [somewhat] randomly given one of the IP addresses and connects to that server. Of course, when the client disconnects and tries to connect again, a different IP address may be returned, and the client would log in at that server, causing two active sessions to be open. This is very unproductive for users, and it's a waste of resources. Microsoft Session Broker (Connection Broker) can be used to keep track of open sessions, and subsequent reconnects redirect the user back to the server hosting their existing session ("revectoring"). This generally works fine. There are a few downfalls: 
 
