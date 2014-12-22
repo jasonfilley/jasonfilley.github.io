@@ -1,0 +1,29 @@
+
+
+
+\begin{bytefield}{32}
+	\bitheader{0,7,8,15,16,23,24,31} \\
+	\wordgroupr{T123 TPKT Header}  %T123, page 15
+		\bitbox{8}{Version}
+		\bitbox{8}{Reserved}
+		\bitbox{8}{Most significant octet of TPKT length}
+		\bitbox{8}{Least significant octet of TPKT length}
+	\endwordgroupr
+	\wordgroupr{X.224 TPDU} %x224 13.3.1
+		\bitbox{8}{LI\\Length Indicator}
+		\bitbox{4}{CR\\Connection Request}
+		\bitbox{4}{CDT\\Initial Credit Allocation}
+		\bitbox{16}{DSTREF\\Destination Reference}
+		\bitbox{16}{SRCREF\\Source Reference}
+		\bitbox{4}{CLASS\\Preferred Trans Path}
+		\bitbox{4}{OPTION\\Trans Channel Options}
+		
+		\bitbox{...}{Optional Routing Token / Cookie}
+		
+		% RDP Negotiation Request - MS 2.2.1.1.1
+		\bitbox{8}{Type}
+		\bitbox{8}{Flags}
+		\bitbox{16}{Length}
+		\bitbox{32}{Requested Protocols}
+	
+	\endwordgroupr
