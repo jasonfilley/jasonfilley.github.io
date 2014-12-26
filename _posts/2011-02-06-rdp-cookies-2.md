@@ -47,6 +47,7 @@ A user cookie is intended to map a user to a specific terminal server, even if t
 
 The format of the user cookie is:
 
+{% highlight text %}
 Cookie:[space]mstshash=[ANSI string][0x0d0a]
 
 10:57:26.321918 192.168.0.201.33520 > 192.168.0.93.3389:
@@ -59,6 +60,7 @@ P 2000684428:2000684480(52) ack 3864383132 win 5840
 0040: 6f6f 6b69 653a 206d 7374 7368 6173 683d ookie: mstshash=
 0050: 6a61 736f 6e74 6573 7440 636f 7270 0d0a jasontest@corp..
 0060: 0100 0800 0000 0000 ........
+{% endhighlight %}
 
 The cookie is then 'mstshash=jasontest@corp'.
 
@@ -74,7 +76,7 @@ Different RDP client implementations impose different size limits on the user co
 * Newer versions of the Windows RDP client can use the [LoadBalanceInfo](http://msdn.microsoft.com/en-us/library/aa381177%28VS.85%29.aspx) property and set the cookie up to 110 characters. [More](http://technet.microsoft.com/en-us/library/ee891143%28WS.10%29.aspx)
 
 * [rdesktop](http://www.rdesktop.org) limits the cookie to 127 characters.
-* [ProperJavaRDP](http://properjavardp.sourceforge.net/) and [Elusivas Open Source Java RDP](http://www.elusiva.com/opensource/) fork both truncate the user cookie to 9 characters: (iso.java): 
+* [ProperJavaRDP](http://properjavardp.sourceforge.net/) truncates the user cookie to 9 characters: (iso.java): 
 
 {% highlight java %}
 if(uname.length() > 9) uname = uname.substring(0,9);
