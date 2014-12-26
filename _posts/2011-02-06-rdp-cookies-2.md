@@ -30,7 +30,7 @@ Microsoft ["2.2.1.1 Client X.224 Connection Request PDU"](http://msdn.microsoft.
 
 A X.224 Connection Request PDU has the following layout:
 
-![RDP Connection Request]({{ site.url }}/rdp_connection_packet.png)
+![RDP Connection Request]({{ site.url }}/images/rdp_connection_packet.png)
 
 
 # Cookies
@@ -96,7 +96,7 @@ IP-based routing tokens "msts=" are handed back by Windows Session Broker / Conn
 
 ![Use Token]({{ site.url }}/images/use_token1.png)
 
-
+{% highlight text %}
 Cookie:[space]msts=[ip address].[port].[reserved][0x0d0a]
 09:39:40.133269 192.168.0.93.34764 > 192.168.0.87.3389:
 P 3072855348:3072855403(55) ack 1295660978 win 46
@@ -108,6 +108,9 @@ P 3072855348:3072855403(55) ack 1295660978 win 46
 0040: 6f6f 6b69 653a 206d 7374 733d 3134 3933 ookie: msts=1493
 0050: 3231 3534 3234 2e31 3536 3239 2e30 3030 215424.15629.000
 0060: 300d 0a01 0008 0000 0000 00             0..........
+{% endhighlight %}
+
+
 
 Decode the IP address as follows:
 
@@ -145,7 +148,7 @@ tcpdump -s 65535 -X dst port 3389 and tcp[37] == 0xe0
 
 Filter: 'x224.rdp_rt'
 
-![Wireshark]({{ site.url }}/images/wireshark_rdp_connect.png)
+![Wireshark]({{ site.url }}/images/wireshark_x224.png)
 
 
 ## Network Monitor
