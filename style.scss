@@ -286,7 +286,8 @@ footer {
 }
 
 .sidebar {
-  border: 1px dotted rgb(127, 127, 127);
+  //border: 1px dotted rgb(127, 127, 127);
+  border: 3px solid $darkorange;
   padding: 4px 3px 4px 6px; /* top right bottom left */
   min-width: 100px;
   float: right;
