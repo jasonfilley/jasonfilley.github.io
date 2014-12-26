@@ -305,7 +305,7 @@ footer {
 }
 
 @media print {
-  .sidebar, wrapper-footer {
+  .sidebar, wrapper-footer, footer {
     display: none;
   }
 }

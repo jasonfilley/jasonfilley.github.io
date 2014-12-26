@@ -4,7 +4,9 @@ title: Java 2753 regutils.dll error
 permalink: /2012/05/07/java-2753-regutils-dll-error/
 ---
 
-I had a workstation today that would not install the 6.0_update32 JRE, getting the error "error 2753 regutils.dll".
+Fixing the error "error 2753 regutils.dll":
+
+<!--excerpt-->
 
 [Sun/Oracle's 'troubleshooting' is worthless](https://forums.oracle.com/forums/thread.jspa?threadID=1316410&amp;start=15&amp;tstart=30).  Nobody else's was any help, either, though.  [JavaRa](http://singularlabs.com/software/javara/) gave it a good try. 
 
