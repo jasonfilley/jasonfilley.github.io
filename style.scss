@@ -27,7 +27,14 @@ body {
   margin: 0 auto;
   max-width: 940px;
   padding: 0 10px;
+  width: 100%;
+}
+
+.contentcontainer {
+  margin: 0 auto;
+  max-width: 80%;
   width: 80%;
+  float: left;
 }
 
 h1, h2, h3, h4, h5, h6 {
