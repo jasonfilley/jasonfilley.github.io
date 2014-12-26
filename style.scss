@@ -279,6 +279,21 @@ footer {
   text-align: center;
 }
 
+.sidebar {
+  border: 1px dotted rgb(127, 127, 127);
+  padding: 4px 3px 4px 6px; /* top right bottom left */
+  min-width: 100px;
+  float: right;
+  font-size: 90%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-left: 6px;
+  visibility: visible;
+  max-width: 20%;
+  width: 15%;
+}
+
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "_highlights";
