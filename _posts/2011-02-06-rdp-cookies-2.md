@@ -132,6 +132,14 @@ The reserved section should always be "0000".
 
 I wrote a short Perl script to parse offline tcpdump packet dumps for RDP cookies:
 
+{% highlight shell %}
+# ./watch_rdp_cookies.pl session.cap
+192.168.0.93:46890:192.168.0.88:3389:mstshash=corp\jaso
+192.168.0.93:46890:192.168.0.88:3389:0
+192.168.0.93:49469:192.168.0.89:3389:msts=1493215424.15629.0000(192.168.0.89:3389)
+{% endhighlight %}
+
+
 {% highlight perl %}
 {% include watch_rdp_cookies.pl %}
 {% endhighlight %}
