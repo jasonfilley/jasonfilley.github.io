@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PHP SOAP Handling of SAP Table Reads
-permalink: 2012/03/11/php-soap-handling-of-sap-table-reads/
+permalink: /2012/03/11/php-soap-handling-of-sap-table-reads/
 ---
 
 Handle tables returned from SAP, with PHP+SOAP.
