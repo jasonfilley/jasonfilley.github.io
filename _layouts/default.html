@@ -44,11 +44,14 @@
 
     <div id="sidebar" class="sidebar">
         <p>Pages<p>
-        <ul>
-        {% for page in site.pages %}
-                <li><a href="{{ BASE_PATH }}{{ page.url }}">{{ page.title }}</a> - {{ page.description }}</li>
+        {% assign pages_list = site.pages %}
+        {% for node in pages_list %}
+          {% if node.title != null %}
+            {% if node.layout == "page" %}
+              <li><a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a></li>
+            {% endif %}
+          {% endif %}
         {% endfor %}
-        </ul>
 
 	<p>Blog Posts</p>
         <ul>
