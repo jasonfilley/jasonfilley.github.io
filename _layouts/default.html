@@ -43,6 +43,13 @@
     </div>
 
     <div id="sidebar" class="sidebar">
+        <p>Pages<p>
+        <ul>
+        {% for page in site.pages %}
+                <li><a href="{{ BASE_PATH }}{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+        </ul>
+
 	<p>Blog Posts</p>
         <ul>
         {% for post in site.posts %}
