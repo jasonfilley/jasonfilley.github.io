@@ -9,7 +9,12 @@ permalink: /2011/02/12/rfc-map-rfcmap-pl/
 
 <!--excerpt-->
 
-For example, here’s the output for `perl -T rfcmap.pl RFC0821 RFC0822 RFC1035`″
+For example, here’s the output for 
+
+{% highlight console %}
+perl -T rfcmap.pl RFC0821 RFC0822 RFC1035
+{% endhighlight %}
+
 which covers some of the initial documents on SMTP, mail message format, and domain names.
 
 ![RFC map relating to RFC's 821, 822, and 1035]({{ site.url }}/images/email_and_domains.png)
