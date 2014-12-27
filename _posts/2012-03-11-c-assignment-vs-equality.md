@@ -26,7 +26,7 @@ if ( $#ARGV < 0 ) {
 
 my $file = $ARGV[0];
 
-open( SOURCEFILE, '<$file' ) || die 'Can't open file $file.\n';
+open( SOURCEFILE, '<$file' ) || die 'Cannot open file $file.\n';
 
 while (<SOURCEFILE>) {
 
